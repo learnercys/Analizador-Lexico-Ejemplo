@@ -284,10 +284,6 @@ public class Editor extends javax.swing.JFrame {
     }
     private javax.swing.JTextArea destino;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea texto;
 
     // pd. cualquier HORROR me lo hacen saber =D.
