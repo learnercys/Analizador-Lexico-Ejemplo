@@ -1,20 +1,20 @@
 /**
 * Editor que realiza un análisis léxico sobre un texto 'fuente'
-* Notas: Se omitio el método initComponents y main que generá netbeans debido a
+* Notas: Se omitio el método initComponents y main que generá netbeans debido a 
 * que el diseño puede variar. Además esto lo puedes hacer ;D.
-* Los componentes visuales necesarios son:
-* TextArea 'texto' que contendrá el texto fuente.
-* TextArea 'destino' que mostrará los resultados del análisis.
-* Button que define el inicio del proceso.
+* Los valores necesarios son: 
+*   TextArea 'texto' que contendrá el texto fuente.
+*   TextArea 'destino' que mostrará los resultados del análisis.
+*   Button que define el inicio del proceso.
 */
 package practica2;
 
 import java.util.ArrayList;
 
 /**
-*
-* @author carlos
-*/
+ *
+ * @author carlos
+ */
 public class Editor extends javax.swing.JFrame {
     // Estado actual.
     private int estado = 0;
@@ -25,27 +25,27 @@ public class Editor extends javax.swing.JFrame {
     // Se analizará carácter por carácter el String fuente. 'caracter'
     // representará el simbolo.
     private char caracter;
-    // Es el carácter o conjunto de caracteres que representan una
+    // Es el carácter o conjunto de caracteres que representan una 
     // acción, atributo, etc. en el lenguaje.
     private String lexema = "";
     // Lista completa de lexemas encontradas en el String fuente.
     private ArrayList<String> listaLexema = new ArrayList();
     // Indica que tipo de lexema se encuentra en la lista lexema.
-    // los atributos estan ordenados:
+    // los atributos estan ordenados: 
     // listaLexema(i) es de tipo listaToken(i)
     private ArrayList<String> listaToken = new ArrayList();
     /**
-* Creates new form Editor
-*/
+     * Creates new form Editor
+     */
     public Editor() {
         destino.setEditable(false);
     }
 
     /**
-* Inicia el proceso de análisis. Inicia los valores
-* que corresponden a cada atributo.
-* texto: Representa el TextArea en el que se encuentra el texto fuente.
-*/
+    * Inicia el proceso de análisis. Inicia los valores 
+    * que corresponden a cada atributo.
+    * texto: Representa el TextArea en el que se encuentra el texto fuente.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         estado = 0;
         posicion = 0;
@@ -55,9 +55,9 @@ public class Editor extends javax.swing.JFrame {
         fuente = texto.getText();
         fuente = fuente.trim();
         if(fuente.length() == 0){
-         destino.setText("El cuadro de entrada no contiene\ncaracteres a"
+        	destino.setText("El cuadro de entrada no contiene\ncaracteres a"
                 + " evaluar. ");
-     }
+    	}
         else{
             iniciarProceso();
             imprimirLista();
@@ -65,26 +65,26 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
-* Método principal del proceso de verificación de tokens,
-* cambia de estados dependiendo del caracter encontrado,
-* en el estado cero no cambia de estado con los caracteres +, =, ;
-* los toma como signos de aceptación (unicamente los agrega al listado
-* de lexemas). El cambio de estado se realiza cuando en el estado cero
-* aparecen los caracteres número o de 'a' to 'z'.
-*/
+     * Método principal del proceso de verificación de tokens, 
+     * cambia de estados dependiendo del caracter encontrado, 
+     * en el estado cero no cambia de estado con los caracteres +, =, ; 
+     * los toma como signos de aceptación (unicamente los agrega al listado
+     * de lexemas). El cambio de estado se realiza cuando en el estado cero 
+     * aparecen los caracteres número o de 'a' to 'z'.
+     */
     private void iniciarProceso(){
         caracter = fuente.charAt(posicion);
         switch(estado){
             case 0:{
-             /**
-* En este estado el lexema actual esta vacío. Si se obtiene
-* como carácter actual ';', '+' o '=' no cambia de estado debido
-* a que estos simbolos son de aceptación, entonces, se agregan a la
-* lista de lexemas, y se vuelve a iniciar el proceso. Si obtiene
-* un caracter de tipo vacío no realiza ningún cambio de estados,
-* solo reinicia el proceso. para los dígitos o letras.
-* Se realiza el cambio de estado que corresponde con el automata.
-*/
+            	/**
+            	* En este estado el lexema actual esta vacío. Si se obtiene 
+            	* como carácter actual ';', '+' o '=' no cambia de estado debido
+            	* a que estos simbolos son de aceptación, entonces, se agregan a la 
+            	* lista de lexemas, y se vuelve a iniciar el proceso. Si obtiene
+            	* un caracter de tipo vacío no realiza ningún cambio de estados,
+            	* solo reinicia el proceso. para los dígitos o letras.
+            	* Se realiza el cambio de estado que corresponde con el automata.
+            	*/
                 if(caracter ==';'){
                     lexema += Character.toString(caracter);
                     addList(lexema,"punto y coma");
@@ -113,9 +113,9 @@ public class Editor extends javax.swing.JFrame {
                 break;
             }
             case 1:{
-             /**
-* Estado 1, inicia cuando se encuentra una letra.
-*/
+            	/**
+				* Estado 1, inicia cuando se encuentra una letra.
+            	*/
                 if(caracter == ';'){
                     addList(lexema,"identificador");
                     addList(";","punto y coma");
@@ -148,9 +148,9 @@ public class Editor extends javax.swing.JFrame {
                 break;
             }
             case 5:{
-             /**
-* Estado 5, inicia cuando se encuentra un digito.
-*/
+            	/**
+            	* Estado 5, inicia cuando se encuentra un digito.
+            	*/
                 if(caracter == ';'){
                     addList(lexema,"numero");
                     addList(";","punto y coma");
@@ -175,7 +175,7 @@ public class Editor extends javax.swing.JFrame {
                     estado = 0;
                 }
                 else if(Character.isDigit(caracter))
-                {
+                { 
                     lexema += Character.toString(caracter);
                 }
                 else {
@@ -187,10 +187,10 @@ public class Editor extends javax.swing.JFrame {
                 break;
         }
         /**
-* Al finalizar el análisis con el carácter actual se toma la
-* posición siguiente y se repite el análisis hasta llegar al punto final
-* del String fuente.
-*/
+		* Al finalizar el análisis con el carácter actual se toma la
+		* posición siguiente y se repite el análisis hasta llegar al punto final 
+		* del String fuente.
+        */
         posicion++;
         imprimir();
         if (posicion >= fuente.length()){
@@ -206,10 +206,10 @@ public class Editor extends javax.swing.JFrame {
         }
     }
     /**
-* Método llamado cuando se encuentra un error en la entrada. Se llama el mismo
-* hasta que encuentra un caracter limitador.
-* Los caracteres limitadores son: + = ; o espacio.
-*/
+     * Método llamado cuando se encuentra un error en la entrada. Se llama el mismo
+     * hasta que encuentra un caracter limitador.
+     * Los caracteres limitadores son: + = ; o espacio.
+     */
     private void error(){
         lexema += Character.toString(caracter);
         posicion++;
@@ -245,47 +245,46 @@ public class Editor extends javax.swing.JFrame {
         }
     }
     /**
-*
-* @param c Agregarle char c es una total tontería porque siempre se analizará
-* caracter( pero bueno =D).
-* @return true si el caracter actual es espacio, tabulador o cambio de linea.
-* También se pueden utilizar métodos de la clase Character para verificar si el
-* carácter actual pertecence a los tipos buscados( tabulación, espacio o salto
-* de línea.)
-*/
+     * 
+     * @param c Agregarle char c es una total tontería porque siempre se analizará 
+     * caracter( pero bueno =D).
+     * @return true si el caracter actual es espacio, tabulador o cambio de linea.
+     * También se pueden utilizar métodos de la clase Character para verificar si el 
+     * carácter actual pertecence a los tipos buscados( tabulación, espacio o salto
+     * de línea.)
+     */
     private boolean esEspacio(char c){
         boolean flag = false;
         if(c == '\n' || c == '\t' || c == ' '){flag = true;}
         return flag;
     }
     /**
-* destino: representa el textArea en el que se mostrarán los resultados obtenidos.
-* Imprime en el textArea 'destino' la lista de tokens y sus lexemas.
-*/
+    * destino: representa el textArea en el que se mostrarán los resultados obtenidos.
+    * Imprime en el textArea 'destino' la lista de tokens y sus lexemas.
+    */
     private void imprimirLista(){
-        String auxiliar = "Token ------- Lexema\n";
+        String auxiliar = "Token    -------   Lexema\n";
         for(int i = 0; i < listaLexema.size(); i++){
-            auxiliar += listaToken.get(i) + " ------- " + listaLexema.get(i) + "\n";
+            auxiliar += listaToken.get(i) + "  -------  " + listaLexema.get(i) + "\n";
         }
         destino.setText(auxiliar);
     }
     /**
-* imprime en consola el estado, caracter, lexema y posicion actual.
-*/
+     * imprime en consola el estado, caracter, lexema y posicion actual.
+     */
     private void imprimir(){
         System.out.println("estado:" + estado + " caracter:" + caracter + " lexema:" + lexema + " posicion:" + posicion );
     }
     /**
-*
-* @param lex
-* @param token
-* agrega lex y token a la lista de lexemas y tokens.
-*/
+     * 
+     * @param lex
+     * @param token 
+     * agrega lex y token a la lista de lexemas y tokens.
+     */
     private void addList(String lex, String token){
         listaLexema.add(lex);
         listaToken.add(token);
     }
-    
     private javax.swing.JTextArea destino;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
