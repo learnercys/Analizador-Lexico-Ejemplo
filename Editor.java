@@ -7,7 +7,6 @@
 *   TextArea 'destino' que mostrará los resultados del análisis.
 *   Button que define el inicio del proceso.
 */
-package practica2;
 
 import java.util.ArrayList;
 
@@ -34,9 +33,7 @@ public class Editor extends javax.swing.JFrame {
     // los atributos estan ordenados: 
     // listaLexema(i) es de tipo listaToken(i)
     private ArrayList<String> listaToken = new ArrayList();
-    /**
-     * Creates new form Editor
-     */
+  
     public Editor() {
         destino.setEditable(false);
     }
@@ -62,7 +59,7 @@ public class Editor extends javax.swing.JFrame {
             iniciarProceso();
             imprimirLista();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
     
     /**
      * Método principal del proceso de verificación de tokens, 
@@ -114,7 +111,7 @@ public class Editor extends javax.swing.JFrame {
             }
             case 1:{
             	/**
-				* Estado 1, inicia cuando se encuentra una letra.
+		* Estado 1, inicia cuando se encuentra una letra.
             	*/
                 if(caracter == ';'){
                     addList(lexema,"identificador");
@@ -187,9 +184,9 @@ public class Editor extends javax.swing.JFrame {
                 break;
         }
         /**
-		* Al finalizar el análisis con el carácter actual se toma la
-		* posición siguiente y se repite el análisis hasta llegar al punto final 
-		* del String fuente.
+	* Al finalizar el análisis con el carácter actual se toma la
+	* posición siguiente y se repite el análisis hasta llegar al punto final 
+	* del String fuente.
         */
         posicion++;
         imprimir();
@@ -206,7 +203,7 @@ public class Editor extends javax.swing.JFrame {
         }
     }
     /**
-     * Método llamado cuando se encuentra un error en la entrada. Se llama el mismo
+     * Llamado cuando se encuentra un error en la entrada. Se llama el mismo
      * hasta que encuentra un caracter limitador.
      * Los caracteres limitadores son: + = ; o espacio.
      */
