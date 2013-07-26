@@ -43,7 +43,7 @@ public class Editor extends javax.swing.JFrame {
     * que corresponden a cada atributo.
     * texto: Representa el TextArea en el que se encuentra el texto fuente.
     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         estado = 0;
         posicion = 0;
         lexema = "";
