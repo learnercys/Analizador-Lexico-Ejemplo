@@ -33,6 +33,10 @@ public class Editor extends javax.swing.JFrame {
     // los atributos estan ordenados: 
     // listaLexema(i) es de tipo listaToken(i)
     private ArrayList<String> listaToken = new ArrayList();
+    
+    private javax.swing.JTextArea destino;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea texto;
   
     public Editor() {
         destino.setEditable(false);
@@ -282,9 +286,6 @@ public class Editor extends javax.swing.JFrame {
         listaLexema.add(lex);
         listaToken.add(token);
     }
-    private javax.swing.JTextArea destino;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JTextArea texto;
 
     // pd. cualquier HORROR me lo hacen saber =D.
 }
