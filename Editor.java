@@ -274,7 +274,8 @@ public class Editor extends javax.swing.JFrame {
      * imprime en consola el estado, caracter, lexema y posicion actual.
      */
     private void imprimir(){
-        System.out.println("estado:" + estado + " caracter:" + caracter + " lexema:" + lexema + " posicion:" + posicion );
+        System.out.println("estado:" + estado + " caracter:" + caracter + " lexema:" 
+        	+ lexema + " posicion:" + posicion );
     }
     /**
      * 
