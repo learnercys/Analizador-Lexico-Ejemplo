@@ -255,9 +255,8 @@ public class Editor extends javax.swing.JFrame {
      * de línea.)
      */
     private boolean esEspacio(char c){
-        boolean flag = false;
-        if(c == '\n' || c == '\t' || c == ' '){flag = true;}
-        return flag;
+        if(c == '\n' || c== '\t' || c == ' ') return true;
+        return false;
     }
     /**
     * destino: representa el textArea en el que se mostrarán los resultados obtenidos.
